@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <style>
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg)
+            }
+            /*8.33% {*/
+            /*    transform: rotate(90deg)*/
+            /*}*/
+            /*25% {*/
+            /*    transform: rotate(90deg)*/
+            /*}*/
+            /*33.33% {*/
+            /*    transform: rotate(180deg)*/
+            /*}*/
+            /*50% {*/
+            /*    transform: rotate(180deg)*/
+            /*}*/
+            /*58.33% {*/
+            /*    transform: rotate(270deg)*/
+            /*}*/
+            /*75% {*/
+            /*    transform: rotate(270deg)*/
+            /*}*/
+            /*83.33% {*/
+            /*    transform: rotate(360deg)*/
+            /*}*/
+            100% {
+                transform: rotate(360deg)
+            }
+        }
+        .fibonacci {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        /*.f1, .f2, .f3, .f5, .f8, .f13, .f21, .f34, .f34_wrap {*/
+        /*    border: solid 1px white;*/
+        /*}*/
+        .f1_line, .f2_line, .f3_line, .f5_line, .f8_line, .f13_line, .f21_line, .f34_line, .f34_wrap {
+            animation-name: spin;
+            animation-duration: 12s;
+            animation-iteration-count: infinite;
+            animation-timing-function: linear;
+        }
+        .f1 {
+            /*background: aqua;*/
+            background: transparent;
+            height: 5px;
+            width: 5px;
+        }
+        .f1_line {
+            width: 100%;
+            height: 100%;
+            /*background: aqua;*/
+            background: transparent;
+            border-top: 1px solid white;
+            border-left: 1px solid white;
+            border-top-left-radius: 100%;
+        }
+        .f2_wrap {
+            display: flex;
+        }
+        .f2 {
+            /*background: #00cfff;*/
+            background: transparent;
+            height: 10px;
+            width: 10px;
+
+        }
+        .f2_line {
+            width: 100%;
+            height: 100%;
+            /*background: #00cfff;*/
+            background: transparent;
+            border-top: 1px solid white;
+            border-right: 1px solid white;
+            border-top-right-radius: 100%;
+        }
+        .f3 {
+            /*background: #009fff;*/
+            background: transparent;
+            height: 15px;
+            width: 15px;
+        }
+        .f3_line {
+            width: 100%;
+            height: 100%;
+            /*background: #009fff;*/
+            background: transparent;
+            border-bottom: 1px solid white;
+            border-right: 1px solid white;
+            border-bottom-right-radius: 100%;
+        }
+        .f5_wrap {
+            display: flex;
+        }
+        .f5 {
+            /*background: #0087ff;*/
+            background: transparent;
+            height: 25px;
+            width: 25px;
+        }
+        .f5_line {
+            width: 100%;
+            height: 100%;
+            /*background: #0087ff;*/
+            background: transparent;
+            border-bottom: 1px solid white;
+            border-left: 1px solid white;
+            border-bottom-left-radius: 100%;
+        }
+        .f8_wrap {
+            display: flex;
+            flex-direction: column;
+        }
+        .f8 {
+            /*background: #0064ff;*/
+            background: transparent;
+            height: 40px;
+            width: 40px;
+        }
+        .f8_line {
+            width: 100%;
+            height: 100%;
+            /*background: #0064ff;*/
+            background: transparent;
+            border-top: 1px solid white;
+            border-left: 1px solid white;
+            border-top-left-radius: 100%;
+        }
+        .f13_wrap {
+            display: flex;
+        }
+        .f13 {
+            /*background: #004cff;*/
+            background: transparent;
+            height: 65px;
+            width: 65px;
+        }
+        .f13_line {
+            width: 100%;
+            height: 100%;
+            /*background: #004cff;*/
+            background: transparent;
+            border-top: 1px solid white;
+            border-right: 1px solid white;
+            border-top-right-radius: 100%;
+        }
+        .f21 {
+            /*background: #3800ff;*/
+            background: transparent;
+            height: 105px;
+            width: 105px;
+        }
+        .f21_line {
+            width: 100%;
+            height: 100%;
+            /*background: #3800ff;*/
+            background: transparent;
+            border-bottom: 1px solid white;
+            border-right: 1px solid white;
+            border-bottom-right-radius: 100%;
+        }
+        .f34 {
+            /*background: #2000ff;*/
+            background: transparent;
+            height: 170px;
+            width: 170px;
+        }
+        .f34_line {
+            width: 100%;
+            height: 100%;
+            /*background: #2000ff;*/
+            background: transparent;
+            border-bottom: 1px solid white;
+            border-left: 1px solid white;
+            border-bottom-left-radius: 100%;
+        }
+        .f34_wrap {
+            display: flex;
+        }
+
+        .wrapper {
+            width: 340px;
+            height: 340px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-gap: 0;
+            grid-auto-rows: minmax(100px, auto);
+        }
+        .one {
+            
+            grid-column: 1 / 2;
+            grid-row: 1;
+            transform: scaleX(-1);
+            animation-name: invertion;
+            animation-duration: 12s;
+            animation-iteration-count: infinite;
+            animation-timing-function: linear;
+        }
+        .two {
+            
+            grid-column: 2 / 2;
+            grid-row: 1;
+            animation-name: invertion;
+            animation-duration: 12s;
+            animation-iteration-count: infinite;
+            animation-timing-function: linear;
+
+        }
+        .three {
+            
+            grid-column: 1 / 2;
+            grid-row: 2;
+            transform: scaleX(-1) scaleY(-1);
+            animation-name: invertion;
+            animation-duration: 12s;
+            animation-iteration-count: infinite;
+            animation-timing-function: linear;
+
+        }
+        .four {
+            
+            grid-column: 2 / 2;
+            grid-row: 2;
+            transform: scaleY(-1);
+            animation-name: invertion;
+            animation-duration: 12s;
+            animation-iteration-count: infinite;
+            animation-timing-function: linear;
+        }
+
+
+    </style>
+</head>
+<body>
+<div class="container-fluid bg-primary " >
+    <div class="fibonacci">
+        <div class="wrapper">
+            <div class="one">
+                <div class="f34_wrap">
+                    <div class="f34">
+                        <div class="f34_line"></div>
+                    </div>
+                    <div class="f21_wrap">
+                        <div class="f13_wrap">
+                            <div class="f8_wrap">
+                                <div class="f8">
+                                    <div class="f8_line"></div>
+                                </div>
+                                <div class="f5_wrap">
+                                    <div class="f5">
+                                        <div class="f5_line"></div>
+                                    </div>
+                                    <div class="f3_wrap">
+                                        <div class="f2_wrap">
+                                            <div class="f1_wrap">
+                                                <div class="f1">
+                                                    <div class="f1_line"></div>
+                                                </div>
+                                                <div class="f1"></div>
+                                            </div>
+                                            <div class="f2">
+                                                <div class="f2_line"></div>
+                                            </div>
+                                        </div>
+                                        <div class="f3">
+                                            <div class="f3_line"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="f13">
+                                <div class="f13_line"></div>
+                            </div>
+                        </div>
+                        <div class="f21">
+                            <div class="f21_line"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="two">
+                <div class="f34_wrap">
+                    <div class="f34">
+                        <div class="f34_line"></div>
+                    </div>
+                    <div class="f21_wrap">
+                        <div class="f13_wrap">
+                            <div class="f8_wrap">
+                                <div class="f8">
+                                    <div class="f8_line"></div>
+                                </div>
+                                <div class="f5_wrap">
+                                    <div class="f5">
+                                        <div class="f5_line"></div>
+                                    </div>
+                                    <div class="f3_wrap">
+                                        <div class="f2_wrap">
+                                            <div class="f1_wrap">
+                                                <div class="f1">
+                                                    <div class="f1_line"></div>
+                                                </div>
+                                                <div class="f1"></div>
+                                            </div>
+                                            <div class="f2">
+                                                <div class="f2_line"></div>
+                                            </div>
+                                        </div>
+                                        <div class="f3">
+                                            <div class="f3_line"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="f13">
+                                <div class="f13_line"></div>
+                            </div>
+                        </div>
+                        <div class="f21">
+                            <div class="f21_line"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="three">
+                <div class="f34_wrap">
+                    <div class="f34">
+                        <div class="f34_line"></div>
+                    </div>
+                    <div class="f21_wrap">
+                        <div class="f13_wrap">
+                            <div class="f8_wrap">
+                                <div class="f8">
+                                    <div class="f8_line"></div>
+                                </div>
+                                <div class="f5_wrap">
+                                    <div class="f5">
+                                        <div class="f5_line"></div>
+                                    </div>
+                                    <div class="f3_wrap">
+                                        <div class="f2_wrap">
+                                            <div class="f1_wrap">
+                                                <div class="f1">
+                                                    <div class="f1_line"></div>
+                                                </div>
+                                                <div class="f1"></div>
+                                            </div>
+                                            <div class="f2">
+                                                <div class="f2_line"></div>
+                                            </div>
+                                        </div>
+                                        <div class="f3">
+                                            <div class="f3_line"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="f13">
+                                <div class="f13_line"></div>
+                            </div>
+                        </div>
+                        <div class="f21">
+                            <div class="f21_line"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="four">
+                <div class="f34_wrap">
+                    <div class="f34">
+                        <div class="f34_line"></div>
+                    </div>
+                    <div class="f21_wrap">
+                        <div class="f13_wrap">
+                            <div class="f8_wrap">
+                                <div class="f8">
+                                    <div class="f8_line"></div>
+                                </div>
+                                <div class="f5_wrap">
+                                    <div class="f5">
+                                        <div class="f5_line"></div>
+                                    </div>
+                                    <div class="f3_wrap">
+                                        <div class="f2_wrap">
+                                            <div class="f1_wrap">
+                                                <div class="f1">
+                                                    <div class="f1_line"></div>
+                                                </div>
+                                                <div class="f1"></div>
+                                            </div>
+                                            <div class="f2">
+                                                <div class="f2_line"></div>
+                                            </div>
+                                        </div>
+                                        <div class="f3">
+                                            <div class="f3_line"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="f13">
+                                <div class="f13_line"></div>
+                            </div>
+                        </div>
+                        <div class="f21">
+                            <div class="f21_line"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+</body>
+</html>
